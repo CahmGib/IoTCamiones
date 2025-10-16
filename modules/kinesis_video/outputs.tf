@@ -1,0 +1,1 @@
+output "kinesis_video_stream_arn" { value = aws_kinesis_video_stream.video.arn }

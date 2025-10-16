@@ -1,0 +1,19 @@
+module "waf_apigw" {
+  source                      = "../modules/waf"
+  web_acl_name                = var.web_acl_name
+  web_acl_description         = var.web_acl_description 
+  environment                 = var.environment
+  scope_acl                   = var.scope_acl
+  amazon_ip_reputation_list   = var.amazon_ip_reputation_list
+  rule_name_whitelist         = var.rule_name_whitelist
+  name_ip_set_permitidas      = var.name_ip_set_permitidas
+  ip_address_version          = var.ip_address_version
+  ip_set_permitidas           = var.ip_set_permitidas
+  country_codes               = var.country_codes 
+}
+
+resource "aws_wafv2_web_acl_association" "api_gateway_assoc" {
+  #resource_arn = aws_api_gateway_stage.api_stage.arn
+  resource_arn = module.apigateway.rest_api_id.stage.arn
+  web_acl_arn  = module.waf_apigw.tf_wafv2_web_acl_arn
+}

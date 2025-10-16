@@ -1,0 +1,37 @@
+
+
+
+module "cognito-user-pool" {
+  source                                  = "./modules/cognito-user-pool"
+  project                                  = var.project
+  name_cognito                            = var.name_cognito
+  name_cognito_client_read                = var.name_cognito_client_read
+  name_cognito_client_write               = var.name_cognito_client_write
+  cognito_domain                          = var.cognito_domain
+  email_subject                           = var.email_subject
+  email_message                           = var.email_message
+  resource_group_name_cognito_read        = var.resource_group_name_cognito_read
+  identifier_resource_group_cognito_read  = var.identifier_resource_group_cognito_read
+  resource_group_name_cognito_write       = var.resource_group_name_cognito_write
+  identifier_resource_group_cognito_write = var.identifier_resource_group_cognito_write
+  scope_name_read                         = var.scope_name_read
+  scope_description_read                  = var.scope_description_read
+  scope_name_write                        = var.scope_name_write
+  allowed_oauth_flows_write               = var.allowed_oauth_flows_write
+  explicit_auth_flows_write               = var.explicit_auth_flows_write
+  scope_description_write                 = var.scope_description_write
+  callback_url_postman_web                = var.callback_url_postman_web
+  callback_url_postman_app                = var.callback_url_postman_app
+  access_token_validity_write             = var.access_token_validity_write
+  id_token_validity_write                 = var.id_token_validity_write
+  name_function_autenticador              = "${var.project}-${var.function_name_autenticador}"
+  account                                 = var.account
+  generate_secret_write                   = var.generate_secret_write
+  #depends_on                              = [module.lambda-autenticador]
+  allowed_oauth_flows_read                = var.allowed_oauth_flows_read
+  explicit_auth_flows_read                = var.explicit_auth_flows_read
+  access_token_validity_read              = var.access_token_validity_read
+  id_token_validity_read                  = var.id_token_validity_read
+  environment                             = var.environment
+}
+#

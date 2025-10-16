@@ -1,0 +1,8 @@
+module "eventbridge" {
+  source               = "./modules/eventbridge"
+  client               = var.client
+  glue_job_arn         = module.glue_job.glue_job_arn
+  eventbridge_role_arn = var.eventbridge_role_arn
+  glue_job_name        = module.glue_job.glue_job_name
+  #glue_job_arn         = module.glue_job.glue_job_arn
+}

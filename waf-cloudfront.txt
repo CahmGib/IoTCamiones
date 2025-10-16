@@ -1,0 +1,19 @@
+module "waf_cloudfront" {
+  source                      = "../modules/waf"
+  web_acl_name                = var.web_acl_name_cf
+  web_acl_description         = var.web_acl_description_cf 
+  environment                 = var.environment
+  scope_acl                   = var.scope_acl_cf
+  amazon_ip_reputation_list   = var.amazon_ip_reputation_list_cf
+  rule_name_whitelist         = var.rule_name_whitelist_cf
+  name_ip_set_permitidas      = var.name_ip_set_permitidas_cf
+  ip_address_version          = var.ip_address_version_cf
+  ip_set_permitidas           = var.ip_set_permitidas_cf
+  country_codes               = var.country_codes_cf 
+}
+
+#resource "aws_cloudfront_distribution" "example" {
+#  # Configuración general...
+#  
+#  web_acl_id = module.waf_cloudfront.tf_wafv2_web_acl_arn
+#}
